@@ -1,55 +1,83 @@
-<h1>Detect Blood Cells</h1>
-<p>This project is an image processing application that detects blood cells using the OpenCV library. Its main function is to identify blood cells in a given image and highlight them within a specified color range.</p>
+# OpenCV Color Segmentation for Blood Cells
 
-<h2>Files:</h2>
-<ul>
-    <li><strong>data:</strong> Contains the image file <code>blood1.jpg</code></li>
-    <li><strong>result:</strong> Contains the result files</li>
-    <li><strong>main.py:</strong> Python file</li>
-</ul>
+This project is a demonstration of fundamental computer vision techniques using OpenCV. It identifies red-colored objects in an image, presumed to be Red Blood Cells (RBCs), by applying a color mask in the HSV color space and then finding and counting the resulting contours.
 
-<!-- How it Works -->
-<h2>How it Works:</h2>
-<ol>
-    <li>The user runs the <code>main.py</code> file and enters the required information:
-        <ul>
-            <li>Path to the folder containing images (data)</li>
-            <li>Path where the results will be saved (result)</li>
-            <li>Data item name (e.g., <code>blood</code>)</li>
-            <li>Maximum number of items (e.g., 10)</li>
-        </ul>
-    </li>
-    <li>The program retrieves the names of images in the given folder and processes them to detect blood cells based on a specified color range.</li>
-    <li>For each image, masking is performed based on the defined color range, and blood cells are highlighted on the image.</li>
-    <li>The results are saved to the folder specified by the user (result).</li>
-</ol>
+<p>
+  <img src="https://github.com/onurmertanarat/detect_blood_cells/blob/master/processed_images/blood1.jpg" alt="Application Screenshot">
+</p>
 
-<!-- Requirements -->
-<h2>Requirements:</h2>
-<ul>
-    <li>Python 3</li>
-    <li>OpenCV (cv2)</li>
-    <li>NumPy</li>
-</ul>
+**Important Disclaimer:** This is an educational script to showcase a basic CV pipeline. It is **not a medically accurate cell counter.** The counting method has significant limitations, which are detailed below.
 
-<!-- File Descriptions -->
-<h2>File Descriptions:</h2>
-<ul>
-    <li><strong>main.py:</strong> The main Python code for detecting blood cells.</li>
-    <li><strong>data/blood1.jpg:</strong> An example image of a blood cell.</li>
-    <li><strong>result:</strong> The folder where the results will be saved.</li>
-    <li><strong>requirements.txt:</strong> File containing the required Python libraries.</li>
-</ul>
+---
 
-<!-- How to Use -->
-<h2>How to Use:</h2>
-<ol>
-    <li>Install Python and the required libraries.</li>
-    <li>Run the <code>main.py</code> file.</li>
-    <li>Enter the requested information when prompted (data folder path, result folder path, data item name, and maximum item number).</li>
-    <li>The program saves the results to the specified folder.</li>
-</ol>
+## Features
 
-<!-- License -->
-<h2>License:</h2>
-<p>This project is licensed under the MIT License. See the LICENSE file for details.</p>
+* **Color-Based Segmentation:** Utilizes the HSV color space to accurately isolate red-colored pixels, correctly handling the hue wrap-around for the color red.
+* **Contour Detection:** Finds and draws outlines around all detected red objects in the image.
+* **Basic Object Counting:** Provides a simple count of the total number of contours (object groups) found.
+* **Image Output:** Saves the processed images with the detected contours and the object count drawn directly onto them.
+
+---
+
+## Limitations
+
+As this project uses a simple, color-based approach, its accuracy is limited. The main limitations are:
+
+* **Overlapping Objects:** Treats multiple touching or overlapping cells as a single object, leading to a significantly inaccurate count.
+* **Color Reliability:** Detection is highly dependent on image lighting, staining techniques, and the hardcoded color range. It may miss cells with slightly different color tones.
+* **Object Specificity:** It only detects red objects and cannot identify or distinguish other cell types like White Blood Cells (WBCs) or Platelets.
+
+---
+
+## Technology Stack
+
+* Python 3
+* OpenCV-Python
+* NumPy
+
+---
+
+## Setup and Usage
+
+### Prerequisites
+
+* Python 3.6+
+* pip
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+    ```sh
+    git clone [https://github.com/onurmertanarat/detect_blood_cells.git](https://github.com/onurmertanarat/detect_blood_cells.git)
+    cd detect_blood_cells
+    ```
+
+2.  **Create and activate a virtual environment:**
+    ```sh
+    # Create the environment
+    python -m venv venv
+
+    # Activate on Windows
+    venv\Scripts\activate
+    ```
+
+3.  **Install the required packages:**
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+### Running the Tool
+
+To process images, run the script from the terminal with the following arguments:
+
+```sh
+python main.py --input_folder <path_to_input_folder> --output_folder <path_to_output_folder>
+```
+
+---
+
+## Contact
+
+Onur Mert Anarat
+
+[linkedin.com/in/onurmertanarat](https://www.linkedin.com/in/onurmertanarat)
